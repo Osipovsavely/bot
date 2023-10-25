@@ -1,0 +1,80 @@
+
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+hello_words = ['привет','hi','дарова','Асамаламалекум']
+ret = ['ret','Перероботка','переробытывание','перероб']
+inf = ['inf', 'инф', 'Help']
+eco = ['eco']
+tram = ['tram']
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    msg = message.author.content.lower()
+
+    if msg in hello_words:
+        await message.channel.send('Здравствуйте! Для озакомления с ботом напишите "$inf"')
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    msg = message.author.content.lower()
+
+    if msg in inf:
+        await message.channel.send('Для получиния информации про перероботку отходов напишите "$ret"')
+        await message.channel.send('Для получиния информации про экологические проблемы напишите "$eco"')
+        await message.channel.send('Для получиния информации про пользу общественного транспорта напишите "$tram"')
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    msg = message.author.content.lower()
+
+    if msg in ret:
+        await message.channel.send('Переработка отходов — деятельность, заключающаяся в обращении с отходами с целью обеспечения их повторного использования в народном хозяйстве и получения сырья, энергии, изделий и материалов.')
+        await message.channel.send('Является экологичной альтернативой обычному захоронению отходов. Позволяет сократить количество используемых ресурсов, а также снизить выбросы парниковых газов.')
+        await message.channel.send('Переработка может предотвратить захоронение потенциально полезных материалов и сократить потребление первичного сырья, тем самым снизив потребление энергии, загрязнение воздуха (от сжигания), загрязнение воды, загрязнение почвы (от захоронения).')
+        await message.channel.send('Согласно общепринятой иерархии ответственного потребления и обращения с отходами, на 1-е место ставят принцип снижения образования отходов, затем вторичное использование и переработку, а далее — сжигание[1][2]. Метод полигонного захоронения отходов считается наименее предпочтительным вариантом.')
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    msg = message.author.content.lower()
+
+    if msg in eco:
+        await message.channel.send('К основным причинам экологических проблем относят:')
+        await message.channel.send('Бесконтрольное потребление в течение многих лет природных ресурсов, которое не всегда оправдано. К этому относят чрезмерную вырубку лесных массивов, добычу полезных ископаемых')
+        await message.channel.send('Промышленная революция. Создание новых заводов, промышленных производств обуславливает загрязнение окружающей среды')
+        await message.channel.send('Здравствуйте! Для озакомления с ботом напишите "$inf"')
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    msg = message.author.content.lower()
+
+    if msg in tram:
+        await message.channel.send('Oбщественный транспорт играет важную роль в снижении автомобильной экологической нагрузки и защите окружающей среды. В отличие от автомобилей, общественный транспорт способствует уменьшению выбросов вредных веществ, таких как углекислый газ и оксиды азота, которые негативно влияют на климат и здоровье людей.')
+
+
+
+
+bot.run("Токен")
